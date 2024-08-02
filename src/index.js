@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, { dbName: 'vapeshop' })  // Specify dbName here
+mongoose.connect('mongodb+srv://zaidqassimme:4AvoW0w8ySwBGMuw@cluster0.n95mecw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { dbName: 'vapeshop' })  // Specify dbName here
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
