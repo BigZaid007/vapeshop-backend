@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const adminRoutes = require('./routes/adminRoute');  // Import admin routes
+const adminRoutes = require('./routes/adminRoute');
+const juiceRoutes = require('./routes/juiceRoute')
+const HomeRoutes = require('./routes/homeRoute')
 
 dotenv.config();
 
@@ -18,7 +20,8 @@ mongoose.connect(process.env.MONGO_URI, { dbName: 'vapeshop' })  // Specify dbNa
 
 // Routes
 app.use('/admin', adminRoutes);  // Use admin routes
-
+app.use('/juice', juiceRoutes); // Use juice routes
+app.use('/', HomeRoutes);
 app.get('/', (req, res) => {
     res.send('Welcome to the Vapeshop API');
 });

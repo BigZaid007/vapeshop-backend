@@ -5,9 +5,9 @@ exports.listCollections = async (req, res) => {
         // Fetch all documents from the 'banners' collection using the Banner model
         const banners = await Banner.find({}, { _id: 0, urls: 1 });
 
-        // Extract 'urls' from each banner and log them
-        const urls = banners.map(banner => banner.urls);
-        console.log('URLs from banners collection:', urls);
+        // Extract 'urls' from each banner and flatten the list
+        const urls = banners.map(banner => banner.urls).flat();
+        console.log('Flattened URLs from banners collection:', urls);
 
         // Send the list of URLs as a JSON response
         res.status(200).json(urls);
